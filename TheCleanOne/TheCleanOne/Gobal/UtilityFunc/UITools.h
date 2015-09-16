@@ -13,4 +13,6 @@
 
 + (void)setNavigationTitleViewString:(NSString *)title andTitleColor:(UIColor *)color
                    forViewController:(UIViewController *)controller;
+
++ (void)setNavigationState:(NSString *)leftBtnStr leftAction:(SEL)action rightBtnStr:(NSString *)rightBtnStr rightAction:(SEL)rightAction rightBtnStateSelected:(NSString *)rightBtnStateName titleStr:(NSString *)title forViewController:(UIViewController *)controller;
 @end

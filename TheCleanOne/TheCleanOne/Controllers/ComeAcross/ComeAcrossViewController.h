@@ -7,10 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-@class HttpConnectToServer;
 
 @interface ComeAcrossViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
-@property (weak, nonatomic) IBOutlet UITextView *textView;
 
 @end

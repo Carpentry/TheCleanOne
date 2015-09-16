@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "HttpConnectToServer.h"
+#import "UIImageView+WebCache.h"
 
 @interface AppDelegate ()
 
@@ -16,6 +18,9 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+
+
     // Override point for customization after application launch.
     return YES;
 }
@@ -40,6 +45,15 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+//接收到内存警告的时候调用
+- (void)applicationDidReceiveMemoryWarning:(UIApplication *)application
+{
+    //停止下载
+    [[SDWebImageManager sharedManager] cancelAll];
+    //删除缓存
+    [[SDWebImageManager sharedManager].imageCache clearMemory];
 }
 
 @end

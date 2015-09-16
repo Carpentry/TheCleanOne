@@ -7,7 +7,33 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ProjectInfo.h"
+
+@protocol ProjectIntroDelegate <NSObject>
+
+//- (void)projectDetailInfo:(NSIndexPath *)indexPath;
+
+- (void)projectDetailInfo:(ProjectInfo *)projectInfo andImages:(NSArray *)imgArr;
+
+@end
+
+
+@protocol ProjectCommentDelegate <NSObject>
+
+- (void)projectCommentDetailInfo:(NSIndexPath *)indexPath;
+
+@end
+
+
 
 @interface TakeTheRoadViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSDictionary *localDict;
+@property (strong, nonatomic) NSArray *localArray;
+
+@property (nonatomic, assign) id<ProjectIntroDelegate> delegate;
+
+@property (nonatomic, weak) id<ProjectCommentDelegate> commentDelegate;
+@property (nonatomic, weak) id<ProjectIntroDelegate> proIntroDelegate;
 
 @end

@@ -21,4 +21,58 @@
     titleTextLabel.text = title;
     controller.navigationItem.titleView = titleTextLabel;
 }
+
++ (void)setNavigationState:(NSString *)leftBtnStr leftAction:(SEL)action rightBtnStr:(NSString *)rightBtnStr rightAction:(SEL)rightAction rightBtnStateSelected:(NSString *)rightBtnStateName titleStr:(NSString *)title forViewController:(UIViewController *)controller
+{
+    if ( IOS7_OR_LATER )
+    {
+        controller.edgesForExtendedLayout = UIRectEdgeNone;
+        controller.extendedLayoutIncludesOpaqueBars = NO;
+        controller.modalPresentationCapturesStatusBarAppearance = NO;
+        [controller.navigationController.navigationBar setBarTintColor:COLOR_WITHRGBA];
+    }
+    else{
+        [[UINavigationBar appearance] setTintColor:COLOR_WITHRGBA];
+    }
+    
+    UILabel *titleTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 168, 44)];
+    titleTextLabel.backgroundColor = [UIColor clearColor];
+    titleTextLabel.textColor = [UIColor whiteColor];
+    titleTextLabel.font = [UIFont fontWithName:@"黑体" size:80];
+    titleTextLabel.textAlignment = NSTextAlignmentCenter;
+    titleTextLabel.text = title;
+    controller.navigationItem.titleView = titleTextLabel;
+    
+    if (leftBtnStr != nil) {
+        UIView *navigationLeftItem_view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 40, 32)];
+        navigationLeftItem_view.backgroundColor = [UIColor clearColor];
+        UIButton * navigationLeftItemBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 32)];
+        [navigationLeftItemBtn setTitle:leftBtnStr forState:UIControlStateNormal];
+        if ([controller respondsToSelector:action]) {
+            [navigationLeftItemBtn addTarget:controller action:action forControlEvents:UIControlEventTouchUpInside];
+        }
+        [navigationLeftItem_view addSubview:navigationLeftItemBtn];
+        UIBarButtonItem *leftBarButton = [[UIBarButtonItem alloc] initWithCustomView:navigationLeftItem_view];
+        controller.navigationItem.leftBarButtonItem = leftBarButton;
+    } else {
+        controller.navigationItem.leftBarButtonItem = nil;
+    }
+    
+    if (rightBtnStr != nil) {
+        UIView *navigationRightItem_view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 40, 32)];
+        navigationRightItem_view.backgroundColor = [UIColor clearColor];
+        UIButton * navigationRightItemBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 32)];
+        [navigationRightItemBtn setTitle:rightBtnStr forState:UIControlStateNormal];
+        [navigationRightItemBtn setTitle:rightBtnStateName forState:UIControlStateSelected];
+        if ([controller respondsToSelector:rightAction]) {
+            [navigationRightItemBtn addTarget:controller action:rightAction forControlEvents:UIControlEventTouchUpInside];
+        }
+        [navigationRightItem_view addSubview:navigationRightItemBtn];
+        UIBarButtonItem *_rightBarButton = [[UIBarButtonItem alloc] initWithCustomView:navigationRightItemBtn];
+        _rightBarButton.enabled = YES;
+        controller.navigationItem.rightBarButtonItem = _rightBarButton;
+    } else {
+        controller.navigationItem.rightBarButtonItem = nil;
+    }
+}
 @end

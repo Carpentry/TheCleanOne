@@ -32,13 +32,19 @@
 
 /************************************设备相关宏***********************************/
 //服务器IP地址
-#define SERVER_IP   @"192.168.1.112"
+//#define SERVER_IP   @"192.168.1.107" //buckstar  xianglong-002
+//#define SERVER_IP   @"192.168.6.100" //infinite-005
+#define SERVER_IP   @"101.200.82.231" //公网
+
+
 //端口号
-#define PORT    8080
+#define PORT    @"8080"
 //版本号
 #define VERSIONNUM [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
 //超时
 #define TIME_OUT   10
 
+
+#define COLOR_WITHRGBA [UIColor colorWithRed:19.0f/255.0f green:123.0f/255.0f blue:204.0f/255.0f alpha:1.0]
 
 #endif
