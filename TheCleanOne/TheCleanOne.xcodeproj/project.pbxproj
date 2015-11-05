@@ -49,6 +49,9 @@
 		9139B5A31B9454AF009CE7A3 /* UIScrollView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9139B58E1B9454AF009CE7A3 /* UIScrollView+MJExtension.m */; };
 		9139B5A41B9454AF009CE7A3 /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 9139B5901B9454AF009CE7A3 /* UIScrollView+MJRefresh.m */; };
 		9139B5A51B9454AF009CE7A3 /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9139B5921B9454AF009CE7A3 /* UIView+MJExtension.m */; };
+		914202281BA963F000953C76 /* ProjectIntroHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 914202271BA963F000953C76 /* ProjectIntroHeaderView.m */; };
+		9142022B1BA967E600953C76 /* ProjectIntroFrameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9142022A1BA967E600953C76 /* ProjectIntroFrameModel.m */; };
+		9142022D1BA9A41400953C76 /* buddy_header_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 9142022C1BA9A41400953C76 /* buddy_header_arrow.png */; };
 		914F87271B8070B300283CD2 /* ProjectComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 914F87261B8070B300283CD2 /* ProjectComment.m */; };
 		915A379F1B5605850045C6B9 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 915A377F1B5605850045C6B9 /* MKAnnotationView+WebCache.m */; };
 		915A37A01B5605850045C6B9 /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 915A37811B5605850045C6B9 /* NSData+ImageContentType.m */; };
@@ -218,6 +221,11 @@
 		9139B5901B9454AF009CE7A3 /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
 		9139B5911B9454AF009CE7A3 /* UIView+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MJExtension.h"; sourceTree = "<group>"; };
 		9139B5921B9454AF009CE7A3 /* UIView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.m"; sourceTree = "<group>"; };
+		914202261BA963F000953C76 /* ProjectIntroHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectIntroHeaderView.h; sourceTree = "<group>"; };
+		914202271BA963F000953C76 /* ProjectIntroHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectIntroHeaderView.m; sourceTree = "<group>"; };
+		914202291BA967E600953C76 /* ProjectIntroFrameModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectIntroFrameModel.h; sourceTree = "<group>"; };
+		9142022A1BA967E600953C76 /* ProjectIntroFrameModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectIntroFrameModel.m; sourceTree = "<group>"; };
+		9142022C1BA9A41400953C76 /* buddy_header_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buddy_header_arrow.png; sourceTree = "<group>"; };
 		914F87251B8070B300283CD2 /* ProjectComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectComment.h; sourceTree = "<group>"; };
 		914F87261B8070B300283CD2 /* ProjectComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectComment.m; sourceTree = "<group>"; };
 		915A377E1B5605850045C6B9 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
@@ -695,6 +703,7 @@
 		91F9F5301B4FAAE900DC0C6A /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				9142022C1BA9A41400953C76 /* buddy_header_arrow.png */,
 				91F9F5311B4FAAE900DC0C6A /* icon-72@2x.png */,
 				91F9F5321B4FAAE900DC0C6A /* icon.png */,
 				91F9F5331B4FAAE900DC0C6A /* icon@2x.png */,
@@ -773,6 +782,10 @@
 				913583C91B7F18FB009401B0 /* ProjectInfoCell.h */,
 				913583CA1B7F18FB009401B0 /* ProjectInfoCell.m */,
 				913583C71B7F18CA009401B0 /* ProjectInfoCell.xib */,
+				914202261BA963F000953C76 /* ProjectIntroHeaderView.h */,
+				914202271BA963F000953C76 /* ProjectIntroHeaderView.m */,
+				914202291BA967E600953C76 /* ProjectIntroFrameModel.h */,
+				9142022A1BA967E600953C76 /* ProjectIntroFrameModel.m */,
 				91B8295E1B7DD84E00B8BEE1 /* ProjectIntroTableViewController.h */,
 				91B8295F1B7DD84E00B8BEE1 /* ProjectIntroTableViewController.m */,
 				91B829681B7DE76A00B8BEE1 /* ProjectIntroTableViewController.xib */,
@@ -971,6 +984,7 @@
 				91F9F5391B4FAAE900DC0C6A /* icon@2x.png in Resources */,
 				9184DC641B7C887E00348A99 /* ShowCell.xib in Resources */,
 				91E019C21B64E1EE00558920 /* CustomHeader.xib in Resources */,
+				9142022D1BA9A41400953C76 /* buddy_header_arrow.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -991,6 +1005,7 @@
 				917A69A61B82F9C100F47AFF /* MJFoundation.m in Sources */,
 				91177BFA1B82075100D99611 /* ProjectCommentList.m in Sources */,
 				915A37AC1B5605850045C6B9 /* UIImageView+HighlightedWebCache.m in Sources */,
+				914202281BA963F000953C76 /* ProjectIntroHeaderView.m in Sources */,
 				9139B4E81B944AC8009CE7A3 /* LYLHttpTool.m in Sources */,
 				9139B5621B94545A009CE7A3 /* AFURLConnectionOperation.m in Sources */,
 				91F9F58C1B4FAEF500DC0C6A /* NSAlert+MKNetworkKitAdditions.m in Sources */,
@@ -1037,6 +1052,7 @@
 				91F9F5A81B4FB9D800DC0C6A /* HttpConnectToServer.m in Sources */,
 				915A37A91B5605850045C6B9 /* UIImage+GIF.m in Sources */,
 				915A37AE1B5605850045C6B9 /* UIView+WebCacheOperation.m in Sources */,
+				9142022B1BA967E600953C76 /* ProjectIntroFrameModel.m in Sources */,
 				9139B55E1B94545A009CE7A3 /* AFHTTPRequestOperationManager.m in Sources */,
 				91E019C11B64E1EE00558920 /* CustomHeader.m in Sources */,
 				91F9F58E1B4FAEF500DC0C6A /* NSDate+RFC1123.m in Sources */,

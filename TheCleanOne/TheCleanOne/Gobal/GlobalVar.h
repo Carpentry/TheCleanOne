@@ -32,9 +32,9 @@
 
 /************************************设备相关宏***********************************/
 //服务器IP地址
-//#define SERVER_IP   @"192.168.1.107" //buckstar  xianglong-002
+#define SERVER_IP   @"192.168.1.108" //buckstar  xianglong-002
 //#define SERVER_IP   @"192.168.6.100" //infinite-005
-#define SERVER_IP   @"101.200.82.231" //公网
+//#define SERVER_IP   @"101.200.82.231" //公网
 
 
 //端口号

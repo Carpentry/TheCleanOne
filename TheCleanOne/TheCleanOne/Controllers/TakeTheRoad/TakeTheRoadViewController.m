@@ -220,19 +220,24 @@
 //    if ([self.delegate respondsToSelector:@selector(projectDetailInfo:)]){
 //        [self.delegate projectDetailInfo:indexPath];
 //    }
+
+    
+
     ProjectSummary *ps = [[ProjectSummary alloc] init];
     ps = self.summaries[indexPath.row];
     
     NSLog(@"%lu",ps.id);
     [self loadProjectInfo:ps.id andUserId:0];
     
-    //获取项目评价列表
-//    if ([self.commentDelegate respondsToSelector:@selector(projectCommentDetailInfo:)]) {
-//        [self.commentDelegate projectCommentDetailInfo:indexPath];
-//    }
-//
-//
- //   [self.navigationController pushViewController:self.paper animated:YES];
+
+//获取项目评价列表
+    if ([self.commentDelegate respondsToSelector:@selector(projectCommentDetailInfo:)]) {
+        [self.commentDelegate projectCommentDetailInfo:indexPath];
+    }
+
+
+    //0916临时测试
+//    [self.navigationController pushViewController:self.paper animated:YES];
 
 }
 
