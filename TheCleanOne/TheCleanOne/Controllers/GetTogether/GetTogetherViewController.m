@@ -1,7 +1,7 @@
 //
 //  GetTogetherViewController.m
 //  TheCleanOne
-//
+//  only some comment for test
 //  Created by lihp on 15/6/28.
 //  Copyright (c) 2015年 liyuelong. All rights reserved.
 //
