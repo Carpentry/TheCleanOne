@@ -448,6 +448,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		91319F281BF58ECD00007C32 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		9139B4E41B944AC8009CE7A3 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
@@ -727,6 +734,7 @@
 			children = (
 				91F9F53F1B4FAAF800DC0C6A /* FirstPageViewController.h */,
 				91F9F5401B4FAAF800DC0C6A /* FirstPageViewController.m */,
+				91319F281BF58ECD00007C32 /* Login */,
 				91F9F53C1B4FAAF800DC0C6A /* ComeAcross */,
 				91F9F5411B4FAAF800DC0C6A /* GetTogether */,
 				91F9F5441B4FAAF800DC0C6A /* MinePlus */,
@@ -1223,7 +1231,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				GCC_PREFIX_HEADER = "/Users/liyuelong/Documents/XcodeFile/TheCleanOne/TheCleanOne/TheCleanOne/Supporting Files/PrefixHeader.pch";
+				GCC_PREFIX_HEADER = "/Users/lihp/LiYuelong/TheCleanOne/TheCleanOne/Supporting Files/PrefixHeader.pch";
 				INFOPLIST_FILE = "TheCleanOne/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1234,7 +1242,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				GCC_PREFIX_HEADER = "/Users/liyuelong/Documents/XcodeFile/TheCleanOne/TheCleanOne/TheCleanOne/Supporting Files/PrefixHeader.pch";
+				GCC_PREFIX_HEADER = "/Users/lihp/LiYuelong/TheCleanOne/TheCleanOne/Supporting Files/PrefixHeader.pch";
 				INFOPLIST_FILE = "TheCleanOne/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

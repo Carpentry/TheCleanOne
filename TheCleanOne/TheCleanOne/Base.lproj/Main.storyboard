@@ -56,14 +56,43 @@
                     <view key="view" contentMode="scaleToFill" id="lhx-p7-koh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="96v-fo-iR5">
+                                <rect key="frame" x="0.0" y="214" width="320" height="305"/>
+                                <animations/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="eGh-hI-wfJ" id="dmZ-0C-Xm3"/>
+                                    <outlet property="delegate" destination="eGh-hI-wfJ" id="TPX-rG-5Kv"/>
+                                </connections>
+                            </tableView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aDc-Mv-GcC">
+                                <rect key="frame" x="0.0" y="64" width="320" height="142"/>
+                                <animations/>
+                            </imageView>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="96v-fo-iR5" firstAttribute="top" secondItem="aDc-Mv-GcC" secondAttribute="bottom" constant="8" symbolic="YES" id="8Y2-jX-2NV"/>
+                            <constraint firstAttribute="trailing" secondItem="aDc-Mv-GcC" secondAttribute="trailing" id="9QA-vj-Fxt"/>
+                            <constraint firstItem="96v-fo-iR5" firstAttribute="trailing" secondItem="aDc-Mv-GcC" secondAttribute="trailing" id="CPr-cj-vx4"/>
+                            <constraint firstItem="96v-fo-iR5" firstAttribute="leading" secondItem="aDc-Mv-GcC" secondAttribute="leading" id="Ofv-qX-A77"/>
+                            <constraint firstItem="96v-fo-iR5" firstAttribute="bottom" secondItem="Y3F-lh-OGN" secondAttribute="top" id="Q3E-xj-ORX"/>
+                            <constraint firstItem="aDc-Mv-GcC" firstAttribute="top" secondItem="2pF-Q4-de8" secondAttribute="bottom" id="hSN-1q-8Vq"/>
+                            <constraint firstItem="aDc-Mv-GcC" firstAttribute="leading" secondItem="lhx-p7-koh" secondAttribute="leading" id="t7B-XV-cEN"/>
+                            <constraint firstItem="96v-fo-iR5" firstAttribute="height" secondItem="aDc-Mv-GcC" secondAttribute="height" constant="163" id="vib-E1-gMr"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="我+" id="pwT-ly-8ji"/>
+                    <connections>
+                        <outlet property="imageView" destination="aDc-Mv-GcC" id="wOp-31-97a"/>
+                        <outlet property="tableView" destination="96v-fo-iR5" id="rUT-AC-Yr6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L8L-xt-xky" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="542" y="-1081.9999999999998"/>
+            <point key="canvasLocation" x="542" y="-1082"/>
         </scene>
         <!--遇见-->
         <scene sceneID="G1W-gy-Txk">
