@@ -32,13 +32,14 @@
 
 /************************************设备相关宏***********************************/
 //服务器IP地址
-#define SERVER_IP   @"192.168.1.108" //buckstar  xianglong-002
+//#define SERVER_IP   @"192.168.1.108" //buckstar  xianglong-002
 //#define SERVER_IP   @"192.168.6.100" //infinite-005
-//#define SERVER_IP   @"101.200.82.231" //公网
+#define SERVER_IP   @"123.57.30.135" //公网
+//#define SERVER_IP @"101.200.158.91" //公网
 
 
 //端口号
-#define PORT    @"8080"
+#define PORT    @"80"
 //版本号
 #define VERSIONNUM [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
 //超时
