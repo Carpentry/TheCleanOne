@@ -29,15 +29,15 @@
         controller.edgesForExtendedLayout = UIRectEdgeNone;
         controller.extendedLayoutIncludesOpaqueBars = NO;
         controller.modalPresentationCapturesStatusBarAppearance = NO;
-        [controller.navigationController.navigationBar setBarTintColor:COLOR_WITHRGBA];
+        [controller.navigationController.navigationBar setBarTintColor:[UIColor whiteColor]];
     }
     else{
-        [[UINavigationBar appearance] setTintColor:COLOR_WITHRGBA];
+        [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     }
     
     UILabel *titleTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 168, 44)];
     titleTextLabel.backgroundColor = [UIColor clearColor];
-    titleTextLabel.textColor = [UIColor whiteColor];
+    titleTextLabel.textColor = [UIColor lightGrayColor];
     titleTextLabel.font = [UIFont fontWithName:@"黑体" size:80];
     titleTextLabel.textAlignment = NSTextAlignmentCenter;
     titleTextLabel.text = title;
@@ -47,6 +47,7 @@
         UIView *navigationLeftItem_view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 40, 32)];
         navigationLeftItem_view.backgroundColor = [UIColor clearColor];
         UIButton * navigationLeftItemBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 32)];
+        [navigationLeftItemBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
         [navigationLeftItemBtn setTitle:leftBtnStr forState:UIControlStateNormal];
         if ([controller respondsToSelector:action]) {
             [navigationLeftItemBtn addTarget:controller action:action forControlEvents:UIControlEventTouchUpInside];
@@ -64,6 +65,7 @@
         UIButton * navigationRightItemBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 32)];
         [navigationRightItemBtn setTitle:rightBtnStr forState:UIControlStateNormal];
         [navigationRightItemBtn setTitle:rightBtnStateName forState:UIControlStateSelected];
+        [navigationRightItemBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
         if ([controller respondsToSelector:rightAction]) {
             [navigationRightItemBtn addTarget:controller action:rightAction forControlEvents:UIControlEventTouchUpInside];
         }

@@ -14,6 +14,10 @@
 
 @interface ARSegmentPageController : UIViewController<ProjectIntroDelegate>
 
+@property (nonatomic, assign) NSInteger projectId;
+@property (nonatomic, assign) NSInteger userId;
+@property (nonatomic, assign) BOOL isCollect;
+
 @property (nonatomic, assign) CGFloat segmentHeight;
 @property (nonatomic, assign) CGFloat headerHeight;
 @property (nonatomic, assign) CGFloat segmentMiniTopInset;

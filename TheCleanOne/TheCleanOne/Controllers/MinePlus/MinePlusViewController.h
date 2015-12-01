@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "User.h"
+#import "ModelUserDetails.h"
 
 @interface MinePlusViewController : UIViewController
+@property (strong, nonatomic) User *curUser;
+//@property (strong, nonatomic) ModelUserDetails *curUser;
 
 @end

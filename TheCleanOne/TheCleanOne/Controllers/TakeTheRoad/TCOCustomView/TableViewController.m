@@ -29,7 +29,7 @@
         _projectInfo.expenses = dict[@"expenses"];
         _projectInfo.notice = dict[@"notice"];
         _projectInfo.contact = dict[@"contact"];
-        
+    
         
         NSLog(@"**********%@    %@   %@*********",_projectInfo.title,_projectInfo.introduction,_projectInfo.feature);
         [self.tableView reloadData];

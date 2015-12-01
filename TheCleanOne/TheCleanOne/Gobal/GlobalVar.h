@@ -9,6 +9,8 @@
 #ifndef TheCleanOne_GlobalVar_h
 #define TheCleanOne_GlobalVar_h
 
+////appDelegate
+#define SHARE ((AppDelegate *)[[UIApplication sharedApplication] delegate])
 
 /************************************设备相关宏***********************************/
 //iPhone 5
@@ -18,7 +20,7 @@
 //iPhone 5s
 #define ISIPHONE5S ([[NSString deviceString] isEqualToString:@"iPhone 5s"]) ? 1 : 0
 //iPhone 6
-#define ISIPHOEN6  ([NSString getDeviceTypeInfo] == 6) ? 1 : 0
+#define ISIPHOEN6  ([NSString getDeviceTypeInfo] == 6 ) ? 1 : 0
 //iPhone 6P
 #define ISIPHONE6P ([[NSString deviceString] isEqualToString:@"iPhone 6 Plus"]) ? 1 : 0
 //iOS 7 之后的版本
@@ -29,6 +31,9 @@
 #define ScreenHeight [[UIScreen mainScreen] bounds].size.height
 //获取屏幕宽度
 #define ScreenWidth [[UIScreen mainScreen] bounds].size.width
+//前缝隙
+#define kLoginPaddingLeftWidth 18
+
 
 /************************************设备相关宏***********************************/
 //服务器IP地址

@@ -20,7 +20,7 @@
 
 @protocol ProjectCommentDelegate <NSObject>
 
-- (void)projectCommentDetailInfo:(NSIndexPath *)indexPath;
+- (void)projectCommentDetailInfo:(NSInteger )projectId;
 
 @end
 

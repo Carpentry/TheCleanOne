@@ -22,6 +22,7 @@
 #import "MJRefresh.h"
 #import "ProjectInfo.h"
 #import "ImageBean.h"
+#import "UITools.h"
 #define CELLHEIGHT 120
 
 @interface TakeTheRoadViewController ()<UITableViewDataSource,UITableViewDelegate>
@@ -57,9 +58,13 @@
     [self.tableView.header endRefreshing];
 }
 
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
   
+
+    
 //tableView设置
     self.tableView.delegate =self;
     self.tableView.dataSource = self;
@@ -116,11 +121,12 @@
             NSString *str = responseObject[@"content"];
             NSData  *jsonData = [str dataUsingEncoding:NSUTF8StringEncoding];
             NSArray *dictArr = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:nil];
-            NSArray *contents = (NSMutableArray *)[ProjectSummary objectArrayWithKeyValuesArray:dictArr];
+//            NSArray *contents = (NSMutableArray *)[ProjectSummary objectArrayWithKeyValuesArray:dictArr];
+            NSArray *contents = [ProjectSummary projectSummaries:dictArr];
             NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(self.summaries.count, contents.count)];
             [self.summaries insertObjects:contents atIndexes:indexSet];
             [self.tableView reloadData];
-            NSLog(@"%@",self.summaries);
+            NSLog(@"~~%@",self.summaries);
         }else{
             NSLog(@"recv failed");
         }
@@ -158,11 +164,20 @@
             
             //防止多次push same viewController
             if (![self.navigationController.topViewController isKindOfClass:[ARSegmentPageController class]]) {
+
+                //是否已收藏此项目
+                if (proInfo.favorite == 1) {
+                    self.paper.isCollect = YES;
+                } else {
+                    self.paper.isCollect = NO;
+                }
+                self.paper.userId = userId;
+                self.paper.projectId = getProjectId;
+                
+                
                 [self.navigationController pushViewController:self.paper animated:YES];
             }
 
-
-            
         }else{
             NSLog(@"recv failed");
         }
@@ -170,6 +185,14 @@
         NSLog(@"%s:%@",__func__,error);
     }];
     
+}
+
+
+- (void)loadComment:(NSInteger)getProjectId
+{
+    if ([self.commentDelegate respondsToSelector:@selector(projectCommentDetailInfo:)]) {
+        [self.commentDelegate projectCommentDetailInfo:getProjectId];
+    }
 }
 
 #pragma mark --UITableViewDelegate
@@ -226,22 +249,20 @@
     ProjectSummary *ps = [[ProjectSummary alloc] init];
     ps = self.summaries[indexPath.row];
     
-    NSLog(@"%lu",ps.id);
-    [self loadProjectInfo:ps.id andUserId:0];
+    [self loadProjectInfo:[ps.projectId integerValue] andUserId:[SHARE.userInfo.userId integerValue]];
     
+    [self loadComment:[ps.projectId integerValue]];
 
 //获取项目评价列表
-    if ([self.commentDelegate respondsToSelector:@selector(projectCommentDetailInfo:)]) {
-        [self.commentDelegate projectCommentDetailInfo:indexPath];
-    }
+//    if ([self.commentDelegate respondsToSelector:@selector(projectCommentDetailInfo:)]) {
+//        [self.commentDelegate projectCommentDetailInfo:indexPath];
+//    }
 
 
     //0916临时测试
 //    [self.navigationController pushViewController:self.paper animated:YES];
 
 }
-
-
 
 
 

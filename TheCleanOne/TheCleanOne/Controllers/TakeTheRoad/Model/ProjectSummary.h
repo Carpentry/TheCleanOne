@@ -9,9 +9,12 @@
 #import <Foundation/Foundation.h>
 
 @interface ProjectSummary : NSObject
-@property (nonatomic, assign) NSInteger id;
+@property (nonatomic, copy) NSString *projectId;
+//@property (nonatomic, assign) NSInteger id;
 @property (nonatomic, copy) NSString *statement;
 @property (nonatomic, copy) NSString *uri;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *type;
+
++ (NSArray *)projectSummaries:(NSArray *)array;
 @end

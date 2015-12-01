@@ -10,11 +10,18 @@
 #import "ARSegmentView.h"
 #import "UIImageView+WebCache.h"
 #import "ImageBean.h"
+#import "UITools.h"
+#import "LYLHttpTool.h"
+#import "LoginViewController.h"
+#import "WriteCommentViewController.h"
 //#define  kImageCount 5
 
 const void* _ARSEGMENTPAGE_CURRNTPAGE_SCROLLVIEWOFFSET = &_ARSEGMENTPAGE_CURRNTPAGE_SCROLLVIEWOFFSET;
 
 @interface ARSegmentPageController ()<UIScrollViewDelegate>
+{
+    UIButton *writeCommentBtn;
+}
 
 @property (nonatomic, assign) NSInteger kImageCount;
 @property (nonatomic, strong) ImageBean *imgBean;
@@ -136,12 +143,98 @@ const void* _ARSEGMENTPAGE_CURRNTPAGE_SCROLLVIEWOFFSET = &_ARSEGMENTPAGE_CURRNTP
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+//    [UITools setNavigationState:@"返回" leftAction:@selector(back) rightBtnStr:@"收藏" rightAction:@selector(btnActionForCollection) rightBtnStateSelected:nil titleStr:@"项目详细" forViewController:self];
+    
+
+    
+    UIBarButtonItem *leftBarBtnItem = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStyleDone target:self action:@selector(back)];
+    UIBarButtonItem *rightBarBtnItem = [[UIBarButtonItem alloc] initWithTitle:@"收藏" style:UIBarButtonItemStyleDone target:self action:@selector(btnActionForCollection)];
+    self.navigationItem.rightBarButtonItem = rightBarBtnItem;
+    self.navigationItem.leftBarButtonItem = leftBarBtnItem;
+    self.title = @"详细介绍";
+    
     //基本配置项
     [self _baseConfigs];
     //基本布局
     [self _baseLayout];
+    
+    [self createWriteCommentBtn];
+}
+
+
+
+- (void)createWriteCommentBtn
+{
+    CGFloat height = 30;
+    writeCommentBtn = [[UIButton alloc] initWithFrame:CGRectMake(50, [UIScreen mainScreen].bounds.size.height - height, self.view.bounds.size.width-100, height)];
+    writeCommentBtn.backgroundColor = [UIColor grayColor];
+    [writeCommentBtn setTitle:@"写评论" forState:UIControlStateNormal];
+    [writeCommentBtn addTarget:self action:@selector(writeCommentAction) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:writeCommentBtn];
+    writeCommentBtn.hidden = YES;
+}
+
+- (void)writeCommentAction
+{
+    if (SHARE.flag_login) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        WriteCommentViewController *wcVC = [storyboard instantiateViewControllerWithIdentifier:@"WriteCommentViewController"];
+        wcVC.projectId = self.projectId;
+        [self.navigationController pushViewController:wcVC animated:YES];
+    }else{
+        LoginViewController *lVC = [[LoginViewController alloc] init];
+        [self.navigationController pushViewController:lVC animated:YES];
+    }
+}
+
+
+- (void)back
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)btnActionForCollection
+{
+    if (SHARE.userInfo.userId == nil) {
+        LoginViewController *loginViewVC = [[LoginViewController alloc] init];
+        [self.navigationController pushViewController:loginViewVC animated:YES];
+        return;
+    }
+    
+    if (!self.isCollect) {
+        NSString *path = [NSString stringWithFormat:@"http://%@:%@%@",SERVER_IP,PORT,@"/FamilyTrip/servlet/AddFavorite"];
+        NSMutableDictionary *param = [[NSMutableDictionary alloc] initWithObjectsAndKeys:VERSIONNUM,@"version",[NSNumber numberWithInteger:self.projectId] ,@"projectId", [NSNumber numberWithInteger:self.userId],@"userId",nil];
+        [LYLHttpTool GET:path parameters:param success:^(id responseObject) {
+            if ([responseObject[@"flag"] intValue] == 1) {
+                [self.navigationItem.rightBarButtonItem setTitle:@"已收藏"];
+
+            }else{
+                NSLog(@"%s failed",__func__);
+            }
+        } failure:^(NSError *error) {
+            NSLog(@"%s:%@",__func__,error);
+        }];
+        self.isCollect = YES;
+        
+    }else{
+        NSString *path = [NSString stringWithFormat:@"http://%@:%@%@",SERVER_IP,PORT,@"/FamilyTrip/servlet/RemoveFavorite"];
+        NSMutableDictionary *param = [[NSMutableDictionary alloc] initWithObjectsAndKeys:VERSIONNUM,@"version",[NSNumber numberWithInteger:self.projectId] ,@"projectId", [NSNumber numberWithInteger:self.userId],@"userId",nil];
+        [LYLHttpTool GET:path parameters:param success:^(id responseObject) {
+            if ([responseObject[@"flag"] intValue] == 1) {
+                [self.navigationItem.rightBarButtonItem setTitle:@"收藏"];
+                
+            }else{
+                NSLog(@"%s failed",__func__);
+            }
+        } failure:^(NSError *error) {
+            NSLog(@"%s:%@",__func__,error);
+        }];
+        self.isCollect = NO;
+    }
 
 }
+
 
 
 - (void)viewWillAppear:(BOOL)animated
@@ -194,6 +287,17 @@ const void* _ARSEGMENTPAGE_CURRNTPAGE_SCROLLVIEWOFFSET = &_ARSEGMENTPAGE_CURRNTP
     
     
     self.pageControl.currentPage = 0;
+    
+    
+    NSString *str;
+    if (self.isCollect) {
+        str = [NSString stringWithFormat:@"%@",@"已收藏"];
+    } else {
+        str = [NSString stringWithFormat:@"%@",@"收藏"];
+    }
+    self.navigationItem.rightBarButtonItem.title = str ;
+    
+
 }
 
 
@@ -256,6 +360,7 @@ const void* _ARSEGMENTPAGE_CURRNTPAGE_SCROLLVIEWOFFSET = &_ARSEGMENTPAGE_CURRNTP
         [self.segmentView.segmentControl insertSegmentWithTitle:title
                                                         atIndex:idx
                                                        animated:NO];
+        
     }];
     
     //defaut at index 0
@@ -488,8 +593,18 @@ const void* _ARSEGMENTPAGE_CURRNTPAGE_SCROLLVIEWOFFSET = &_ARSEGMENTPAGE_CURRNTP
     
     //add new controller 添加新的控制器
     NSUInteger index = [sender selectedSegmentIndex];
+    
+    // index 0 是介绍界面   1是评论界面
+    NSLog(@"index:%u",index);
+    if (index == 1) {
+        writeCommentBtn.hidden = NO;
+    }else{
+        writeCommentBtn.hidden = YES;
+    }
+    
     UIViewController<ARSegmentControllerDelegate> *controller = self.controllers[index];
     
+
     
     [self.currentDisplayController willMoveToParentViewController:nil];
     [self.currentDisplayController.view removeFromSuperview];

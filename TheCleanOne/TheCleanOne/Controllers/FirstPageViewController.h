@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MinePlusViewController.h"
 
 @interface FirstPageViewController : UITabBarController
-
+- (void)createMinePlusNavigationBar;
 @end

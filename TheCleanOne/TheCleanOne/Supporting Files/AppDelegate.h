@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ModelUserDetails.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (nonatomic) BOOL flag_login; //是否已登陆
+@property (strong, nonatomic) ModelUserDetails *userInfo;
+
 
 
 

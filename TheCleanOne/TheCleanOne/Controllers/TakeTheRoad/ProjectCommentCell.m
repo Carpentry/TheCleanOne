@@ -24,9 +24,19 @@
     _nameLabel.text = projectComment.userName;
     _contentLabel.text = projectComment.content;
     _dateLabel.text = projectComment.date;
+    
+    if ([projectComment.userName isEqualToString:SHARE.userInfo.nickname]) {
+        _deleteBtn.hidden = NO;
+    }else{
+        _deleteBtn.hidden = YES;
+    }
 }
 
 
+
+- (IBAction)deleteBtnAction:(id)sender {
+    
+}
 
 + (instancetype)cellWithTableView:(UITableView *)tableView 
 {

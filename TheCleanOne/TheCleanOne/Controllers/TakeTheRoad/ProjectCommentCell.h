@@ -11,6 +11,8 @@
 
 @interface ProjectCommentCell : UITableViewCell
 @property (nonatomic, strong) ProjectComment *projectComment;
+@property (weak, nonatomic) IBOutlet UIButton *deleteBtn;
+- (IBAction)deleteBtnAction:(id)sender;
 
 + (instancetype)cellWithTableView:(UITableView *)tableView;
 @end

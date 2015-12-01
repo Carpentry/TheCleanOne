@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="44" id="KGk-i7-Jjw" customClass="InputOnlyTextTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" id="ywS-Fs-0e8" userLabel="Text Field">
+                        <rect key="frame" x="18" y="12" width="260" height="20"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <animations/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits"/>
+                        <connections>
+                            <action selector="editDidBegin:" destination="KGk-i7-Jjw" eventType="editingDidBegin" id="DDx-Uf-XZG"/>
+                            <action selector="editDidEnd:" destination="KGk-i7-Jjw" eventType="editingDidEnd" id="aqM-QT-g92"/>
+                            <action selector="textValueChange:" destination="KGk-i7-Jjw" eventType="editingChanged" id="UCq-ON-NhG"/>
+                        </connections>
+                    </textField>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="p24-DQ-88J" userLabel="Clear Btn">
+                        <rect key="frame" x="546" y="0.0" width="40" height="42"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <animations/>
+                        <state key="normal" image="text_clear_btn.png"/>
+                        <connections>
+                            <action selector="btnClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="hql-fE-Waj"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <animations/>
+            </tableViewCellContentView>
+            <animations/>
+            <connections>
+                <outlet property="clearBtn" destination="p24-DQ-88J" id="zdp-SM-QRQ"/>
+                <outlet property="textField" destination="ywS-Fs-0e8" id="r6G-Sb-ir8"/>
+            </connections>
+            <point key="canvasLocation" x="173" y="154"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="text_clear_btn.png" width="21" height="21"/>
+    </resources>
+</document>
